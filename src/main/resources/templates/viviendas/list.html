@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Viviendas disponibles</h1>
+    <form method="get" action="/viviendas" class="mb-3 d-flex">
+        <input type="text" name="query" th:value="${query}" placeholder="Buscar por título..." class="form-control me-2" />
+        <input type="text" name="queryMenor" th:value="${queryMenor}" placeholder="Precio menor que..." class="form-control me-2" />
+        <input type="text" name="queryMayor" th:value="${queryMayor}" placeholder="Precio mayor que..." class="form-control me-2" />
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4" th:each="v : ${viviendas}">
+                    <div class="card card-list">
+                        <div class="card-body">
+                            <h5 class="card-title"><a th:href="@{/viviendas/{id}(id=${v.id})}" th:text="${v.titulo}"></a></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${v.direccion}"></h6>
+                            <p class="card-text"><strong>Precio:</strong> <span th:text="${v.precio}"></span></p>
+                            <a th:href="@{/viviendas/{id}(id=${v.id})}" class="btn btn-outline-primary">Ver detalle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="mt-4"><a href="/admin/viviendas">Área admin</a></p>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

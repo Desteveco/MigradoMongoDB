@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container mt-4">
+    <h1>Administración de Viviendas</h1>
+    <p>
+        <a th:href="@{/admin/viviendas/nuevo}" class="btn btn-success">Nueva vivienda</a>
+        <a href="/viviendas" class="btn btn-link">Ver público</a>
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr><th>ID</th><th>Título</th><th>Dirección</th><th>Precio</th><th>Disponible</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="v : ${viviendas}">
+            <td th:text="${v.id}"></td>
+            <td th:text="${v.titulo}"></td>
+            <td th:text="${v.direccion}"></td>
+            <td th:text="${v.precio}"></td>
+            <td><span th:text="${v.disponible} ? 'Sí' : 'No'"></span></td>
+            <td>
+                <a th:href="@{/admin/viviendas/{id}/edit(id=${v.id})}" class="btn btn-primary btn-sm">Editar</a>
+                <form th:action="@{/admin/viviendas/{id}/delete(id=${v.id})}" method="post" style="display:inline">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
