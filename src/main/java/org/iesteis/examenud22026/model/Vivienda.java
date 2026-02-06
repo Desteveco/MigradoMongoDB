@@ -1,6 +1,7 @@
 package org.iesteis.examenud22026.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -25,6 +26,7 @@ public class Vivienda {
 
     private boolean disponible;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaPublicacion;
 
     private String tipo;

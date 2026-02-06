@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "titulo": "Piso céntrico",
+    "descripcion": "Piso céntrico, 3 habitaciones, luminoso",
+    "direccion": "Calle Mayor 1",
+    "precio": 120000.00,
+    "disponible": true,
+    "fecha_publicacion": "2026-01-10",
+    "tipo": "PISO"
+  },
+  {
+    "_id": 2,
+    "titulo": "Chalet con jardín",
+    "descripcion": "Chalet independiente con amplio jardín",
+    "direccion": "Urbanización Las Flores 12",
+    "precio": 350000.00,
+    "disponible": true,
+    "fecha_publicacion": "2026-01-05",
+    "tipo": "CHALET"
+  },
+  {
+    "_id": 3,
+    "titulo": "Estudio económico",
+    "descripcion": "Estudio pequeño ideal para estudiantes",
+    "direccion": "Avenida de la Universidad 3",
+    "precio": 45000.00,
+    "disponible": false,
+    "fecha_publicacion": "2025-12-01",
+    "tipo": "ESTUDIO"
+  }
+]
